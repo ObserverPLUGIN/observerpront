@@ -31,6 +31,13 @@
   color: rgba(246, 240, 229, 0.88);
 }
 
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
 .health-pill {
   display: inline-flex;
   align-items: center;
@@ -64,11 +71,75 @@
   box-shadow: 0 0 0 6px rgba(239, 139, 109, 0.14);
 }
 
-.workspace {
+.login-shell {
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr) 320px;
-  gap: 18px;
+  place-items: center;
+  min-height: calc(100vh - 240px);
   margin-top: 20px;
+}
+
+.login-card {
+  width: min(460px, 100%);
+  padding: 24px;
+  border-radius: 24px;
+  background: rgba(255, 251, 245, 0.9);
+  border: 1px solid rgba(27, 51, 58, 0.1);
+  box-shadow: 0 20px 44px rgba(67, 49, 20, 0.08);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.field span {
+  color: #536971;
+  font-size: 0.9rem;
+}
+
+.field input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(27, 51, 58, 0.14);
+  background: #fffdf9;
+  color: #183740;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 1rem;
+}
+
+.field input:focus {
+  outline: 2px solid rgba(33, 110, 103, 0.22);
+  border-color: rgba(33, 110, 103, 0.4);
+}
+
+.primary-button,
+.logout-button {
+  border: none;
+  cursor: pointer;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+}
+
+.primary-button {
+  width: 100%;
+  margin-top: 16px;
+  background: linear-gradient(135deg, #184d57, #216e67);
+  color: #f8f3ea;
+}
+
+.primary-button:disabled {
+  opacity: 0.68;
+  cursor: progress;
+}
+
+.logout-button {
+  background: rgba(255, 248, 238, 0.14);
+  color: #f8f3ea;
+  border: 1px solid rgba(255, 248, 238, 0.18);
 }
 
 .panel {
@@ -90,6 +161,13 @@
 .panel-header span {
   color: #596f79;
   font-size: 0.92rem;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 320px;
+  gap: 18px;
+  margin-top: 20px;
 }
 
 .player-list {
@@ -353,16 +431,6 @@
   text-align: center;
 }
 
-@media (max-width: 1180px) {
-  .workspace {
-    grid-template-columns: 1fr;
-  }
-
-  .map-panel {
-    min-height: auto;
-  }
-}
-
 @media (max-width: 860px) {
   .dashboard-shell {
     width: min(100% - 20px, 1360px);
@@ -379,11 +447,25 @@
     flex-direction: column;
   }
 
+  .hero-actions {
+    align-items: stretch;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
 
   .map-legend {
     gap: 10px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .map-panel {
+    min-height: auto;
   }
 }
