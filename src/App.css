@@ -1,0 +1,121 @@
+.app-shell {
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 56px 0 72px;
+}
+
+.hero-panel {
+  padding: 40px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 196, 112, 0.32), transparent 28%),
+    linear-gradient(135deg, rgba(15, 45, 62, 0.96), rgba(28, 84, 91, 0.92));
+  color: #f7f2e8;
+  box-shadow: 0 28px 60px rgba(11, 25, 34, 0.24);
+}
+
+.eyebrow {
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247, 242, 232, 0.72);
+}
+
+.hero-copy {
+  max-width: 640px;
+  color: rgba(247, 242, 232, 0.88);
+}
+
+.status-card {
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(25, 53, 59, 0.12);
+  background: rgba(255, 252, 245, 0.9);
+  box-shadow: 0 18px 40px rgba(69, 47, 20, 0.08);
+}
+
+.status-card.connected {
+  border-color: rgba(34, 120, 78, 0.28);
+}
+
+.status-card.error {
+  border-color: rgba(181, 67, 45, 0.28);
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: #17343d;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #d2a548;
+  box-shadow: 0 0 0 6px rgba(210, 165, 72, 0.14);
+}
+
+.connected .status-dot {
+  background: #2f8a63;
+  box-shadow: 0 0 0 6px rgba(47, 138, 99, 0.14);
+}
+
+.error .status-dot {
+  background: #c35d43;
+  box-shadow: 0 0 0 6px rgba(195, 93, 67, 0.14);
+}
+
+.status-card pre {
+  margin: 0;
+  padding: 18px;
+  overflow: auto;
+  border-radius: 18px;
+  background: #17343d;
+  color: #f8f3ea;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.info-card {
+  padding: 24px;
+  border-radius: 24px;
+  background: rgba(255, 252, 245, 0.86);
+  border: 1px solid rgba(25, 53, 59, 0.1);
+  box-shadow: 0 16px 36px rgba(69, 47, 20, 0.06);
+}
+
+.info-card h2 {
+  margin-bottom: 8px;
+}
+
+.info-card p {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 860px) {
+  .app-shell {
+    width: min(100% - 24px, 1080px);
+    padding: 24px 0 40px;
+  }
+
+  .hero-panel,
+  .status-card,
+  .info-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
