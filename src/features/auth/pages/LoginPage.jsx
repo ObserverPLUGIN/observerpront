@@ -3,15 +3,13 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { loginWithPassword } from '../api/authApi'
 import { LoginForm } from '../components/LoginForm'
 import { useAuth } from '../hooks/useAuth'
-import { ServerStatusPill } from '../../server/components/ServerStatusPill'
-import { useServerHealth } from '../../server/hooks/useServerHealth'
 import { AuthLayout } from '../../../shared/layouts/AuthLayout'
 
-export function LoginPage() {
+export function LoginPage({ preview = false }) {
   const auth = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
-  const health = useServerHealth()
+  const locationNotice = typeof location.state?.notice === 'string' ? location.state.notice : ''
   const [credentials, setCredentials] = useState({
     username: 'admin',
     password: '',
@@ -19,12 +17,18 @@ export function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-  if (auth.isAuthenticated) {
+  if (!preview && auth.isAuthenticated) {
     return <Navigate to={location.state?.from ?? '/players'} replace />
   }
 
   async function handleSubmit(event) {
     event.preventDefault()
+
+    if (preview) {
+      setErrorMessage('')
+      return
+    }
+
     setIsSubmitting(true)
     setErrorMessage('')
 
@@ -51,10 +55,10 @@ export function LoginPage() {
   }
 
   return (
-    <AuthLayout heroActions={<ServerStatusPill health={health} />}>
+    <AuthLayout>
       <LoginForm
         credentials={credentials}
-        errorMessage={errorMessage || auth.notice}
+        errorMessage={errorMessage || auth.notice || locationNotice}
         isSubmitting={isSubmitting}
         onChange={handleChange}
         onSubmit={handleSubmit}
